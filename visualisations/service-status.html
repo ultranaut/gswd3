@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Service Status</title>
+
+  <script src="d3.js" type="text/javascript"></script>
+  <script>
+    function draw(data) {
+      "use strict";
+      d3.select("body")
+        .append("ul")
+        .selectAll("li")
+        .data(data)
+        .enter()
+        .append("li")
+        .text(function (d) {
+            return d.name + ": " + d.status;
+          });
+      d3.selectAll('li')
+        .style('font-weight', function (d) {
+            if (d.status == 'GOOD SERVICE') {
+              return 'normal';
+            } else {
+              return 'bold';
+            }
+        })
+    }
+  </script>
+
+</head>
+<body>
+  <script type="text/javascript">
+    d3.json("data/service_status.json", draw)
+  </script>
+</body>
+</html>
