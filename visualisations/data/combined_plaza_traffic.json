@@ -1,0 +1,64 @@
+{
+  "plaza": [
+    {
+      "cash": 26774.09756097561,
+      "electronic": 51316.53802008608,
+      "id": 1,
+      "name": "Robert F. Kennedy Bridge Bronx Plaza"
+    },
+    {
+      "cash": 18612.77618364419,
+      "electronic": 67502.12482065997,
+      "id": 2,
+      "name": "Robert F. Kennedy Bridge Manhattan Plaza"
+    },
+    {
+      "cash": 31343.0631276901,
+      "electronic": 76906.89383070302,
+      "id": 3,
+      "name": "Bronx-Whitestone Bridge"
+    },
+    {
+      "cash": 9863.7658045977,
+      "electronic": 51861.5933908046,
+      "id": 4,
+      "name": "Henry Hudson Bridge"
+    },
+    {
+      "cash": 3805.8350071736013,
+      "electronic": 17488.73888091822,
+      "id": 5,
+      "name": "Marine Parkway-Gil Hodges Memorial Bridge"
+    },
+    {
+      "cash": 4577.186513629842,
+      "electronic": 16056.855093256814,
+      "id": 6,
+      "name": "Cross Bay Veterans Memorial Bridge"
+    },
+    {
+      "cash": 13830.994261119082,
+      "electronic": 65148.13916786227,
+      "id": 7,
+      "name": "Queens Midtown Tunnel"
+    },
+    {
+      "cash": 6900.047345767575,
+      "electronic": 38908.203730272595,
+      "id": 8,
+      "name": "Brooklyn-Battery Tunnel"
+    },
+    {
+      "cash": 25262.48493543759,
+      "electronic": 84575.18794835007,
+      "id": 9,
+      "name": "Throgs Neck Bridge"
+    },
+    {
+      "cash": 18275.3543758967,
+      "electronic": 74291.31420373028,
+      "id": 11,
+      "name": "Verrazano-Narrows Bridge"
+    }
+  ]
+}

@@ -9,11 +9,15 @@
         font-size: 0.7rem;
         font-family: sans-serif;
       }
+      .line {
+        position: relative;
+        margin-bottom: 2px;
+      }
       .label,
-      .bar {
+      .c-bar,
+      .e-bar {
         height: 1.5rem;
         line-height: 1.5rem;
-        margin-bottom: 2px;
         padding-right: 0.7rem;
         text-align: right;
         -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
@@ -22,25 +26,33 @@
       }
       .label {
         width: 16rem;
-        float: left;
-        color: #088;
+        color: #444;
       }
-      .bar {
+      .c-bar,
+      .e-bar {
         color: white;
+        position: absolute;
+        top: 0;
+        left: 16rem;
+      }
+      .c-bar {
         background: #008b8b;
-        margin-left: 16rem;
-        font-weight: bold;
+        z-index: 5;
+      }
+      .e-bar {
+        background: #8b0000;
       }
     </style>
 
     <script src="d3.js"></script>
     <script type="text/javascript">
       function draw(d) {
+        "use strict";
         var line = d3.select('body')
                      .append('div')
                        .attr('class', 'chart')
-                     .selectAll('.bar')
-                     .data(d.cash)
+                     .selectAll('.line')
+                     .data(d.plaza)
                      .enter()
                      .append('div')
                        .attr('class', 'line');
@@ -52,18 +64,26 @@
             })
 
         line.append('div')
-            .attr('class', 'bar')
+            .attr('class', 'c-bar')
             .style('width', function (d) {
-                return Math.round(d.count/100) + 'px'; })
+                return Math.round(d.cash/100) + 'px'; })
             .text(function (d) {
-                return Math.round(d.count)
+                return Math.round(d.cash)
+            })
+
+        line.append('div')
+            .attr('class', 'e-bar')
+            .style('width', function (d) {
+                return Math.round((d.cash + d.electronic)/100) + 'px'; })
+            .text(function (d) {
+                return Math.round(d.electronic)
             })
       }
     </script>
 </head>
 <body>
   <script type="text/javascript">
-    d3.json('data/plaza_traffic.json', draw);
+    d3.json('data/combined_plaza_traffic.json', draw);
   </script>
 </body>
 </html>
