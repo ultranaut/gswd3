@@ -3,33 +3,80 @@
 <head>
   <meta charset="UTF-8" />
   <title>Service Status</title>
-
+  <style type="text/css">
+    body {
+      background: #586e75;
+      font-family: Helvetica, sans-serif;
+    }
+    ul {
+      list-style: none;
+      width: 640px;
+    }
+    li {
+      padding: 0.5rem 1rem;
+      background: #eae8e0;
+      border-radius: 32px;
+      margin: 1em;
+    }
+    li h3 {
+      display: inline-block;
+      font-size: 1rem;
+      line-height: 1rem;
+      margin-right: 1rem;
+      background: orange;
+      border-radius: 12px;
+      color: white;
+      padding: 4px 12px;
+      font-weight: normal;
+    }
+    li .status {
+      display: inline-block;
+      cursor: pointer;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
   <script src="d3.js" type="text/javascript"></script>
   <script>
     function draw(data) {
       "use strict";
-      d3.select("body")
-        .append("ul")
-        .selectAll("li")
-        .data(data)
-        .enter()
-        .append("li")
-        .text(function (d) {
-            return d.name + ": " + d.status;
+      var line = d3.select("body")
+          .append("ul")
+          .selectAll("li")
+          .data(data)
+          .enter()
+          .append("li");
+      line.append('h3')
+          .text(function (d) {
+              return d.name;
           });
-      d3.selectAll('li')
-        .style('font-weight', function (d) {
-            if (d.status == 'GOOD SERVICE') {
-              return 'normal';
-            } else {
-              return 'bold';
+      line.append('a')
+          .attr('class', 'status')
+          .text(function (d) {
+            return d.status;
+          });
+      line.each(function (d) {
+            if (d.text[0]) {
+              d3.select(this)
+                .append('div')
+                .attr('class', 'message hidden')
+                .html(function (d) {
+                  return d.text;
+                });
             }
-        })
+           })
+
+      // set toggle action on status
+      $('.status').on('click', function (e) {
+        $(this).next('.message').toggleClass('hidden');
+      });
     }
   </script>
 
 </head>
 <body>
+  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript">
     d3.json("data/service_status.json", draw)
   </script>
